@@ -25,4 +25,5 @@ jobs:
           script: |
             cd /var/www/wpsite
             git pull origin main
+            chown -R www-data:www-data .
             # Additional commands to set up WordPress and ensure permissions, etc.
