@@ -1,4 +1,4 @@
-name: Deploy WordPress
+name: WordPress Deployment
 
 on:
   push:
@@ -6,15 +6,32 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Install SSH client
-        run: sudo apt-get install -y openssh-client
+      - name: Install Dependencies
+        run: |
+          # Commands to install dependencies (e.g., composer install, npm install)
+
+      - name: Run Automated Tests
+        run: |
+          # Commands to run automated tests (e.g., phpunit, npm test)
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: |
+          # Commands to install dependencies (e.g., composer install, npm install)
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
